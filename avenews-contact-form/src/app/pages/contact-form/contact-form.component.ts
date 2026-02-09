@@ -3,8 +3,6 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
-  AbstractControl,
-  ValidationErrors,
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
@@ -15,6 +13,8 @@ import { ContactHeaderComponent } from '../../components/contact-header/contact-
 import { TermsSectionComponent } from '../../components/terms-section/terms-section.component';
 import { SubmitSectionComponent } from '../../components/submit-section/submit-section.component';
 import { FormService, ContactFormData } from '../../services/form.service';
+import { kenyaPhoneValidator } from '../../validators/kenya-phone.validator';
+import { phoneMatchValidator } from '../../validators/phone-match.validator';
 
 @Component({
   selector: 'app-contact-form',
@@ -45,68 +45,23 @@ export class ContactFormComponent {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        phoneNumber: [
-          '',
-          [Validators.required, ContactFormComponent.kenyaPhoneValidator],
-        ],
-        verifyPhone: [
-          '',
-          [Validators.required, ContactFormComponent.kenyaPhoneValidator],
-        ],
-        secondPhone: ['', [ContactFormComponent.kenyaPhoneValidator]],
+        phoneNumber: ['', [Validators.required, kenyaPhoneValidator]],
+        verifyPhone: ['', [Validators.required, kenyaPhoneValidator]],
+        secondPhone: ['', [kenyaPhoneValidator]],
         nationalId: ['', Validators.required],
         termsAccepted: [false, Validators.requiredTrue],
         captchaChecked: [false, Validators.requiredTrue],
       },
       {
-        validators: ContactFormComponent.phoneMatchValidator,
+        validators: phoneMatchValidator,
       },
     );
-  }
-
-  /** Phone must be 10 digits total and include country code 254. */
-  static kenyaPhoneValidator(control: AbstractControl): ValidationErrors | null {
-    const rawValue = control.value as string;
-
-    if (!rawValue) return null;
-
-    const digitsOnly = rawValue.replace(/\D/g, '');
-    const fullNumber = `254${digitsOnly}`;
-
-    if (!/^254\d{7}$/.test(fullNumber)) {
-      return { invalidPhone: true };
-    }
-
-    return null;
-  }
-
-  /** Cross-field validator: verifyPhone must match phoneNumber */
-  static phoneMatchValidator(group: AbstractControl): ValidationErrors | null {
-    const phone = group.get('phoneNumber')?.value;
-    const verify = group.get('verifyPhone')?.value;
-
-    if (phone && verify && phone !== verify) {
-      group.get('verifyPhone')?.setErrors({ phoneMismatch: true });
-      return { phoneMismatch: true };
-    }
-
-    // Only clear phoneMismatch error, preserve other errors
-    const verifyControl = group.get('verifyPhone');
-    if (verifyControl?.errors?.['phoneMismatch']) {
-      const { phoneMismatch, ...remainingErrors } = verifyControl.errors;
-      verifyControl.setErrors(
-        Object.keys(remainingErrors).length ? remainingErrors : null,
-      );
-    }
-
-    return null;
   }
 
   get showGlobalError(): boolean {
     return this.submitted && this.contactForm.invalid;
   }
 
-  /** Helper to get typed FormControl for child components */
   getControl(name: string): FormControl {
     return this.contactForm.get(name) as FormControl;
   }
