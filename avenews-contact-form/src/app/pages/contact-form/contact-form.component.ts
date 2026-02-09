@@ -64,21 +64,25 @@ export class ContactFormComponent {
     );
   }
 
-  /** Phone must be 10 digits total and include country code 254. */
-  static kenyaPhoneValidator(control: AbstractControl): ValidationErrors | null {
-    const rawValue = control.value as string;
+/** Phone must be 10 digits total (254 + 7 digits). */
+static kenyaPhoneValidator(control: AbstractControl): ValidationErrors | null {
+  const rawValue = control.value as string;
 
-    if (!rawValue) return null;
+  if (!rawValue) return null;
 
-    const digitsOnly = rawValue.replace(/\D/g, '');
-    const fullNumber = `254${digitsOnly}`;
+  // Remove all non-digit characters
+  const digitsOnly = rawValue.replace(/\D/g, '');
+  
+  // User enters 7 digits, we prepend 254 to make 10 total
+  const fullNumber = `254${digitsOnly}`;
 
-    if (!/^254\d{7}$/.test(fullNumber)) {
-      return { invalidPhone: true };
-    }
-
-    return null;
+  // Validate: exactly 10 digits total (254 + 7)
+  if (!/^254\d{7}$/.test(fullNumber)) {
+    return { invalidPhone: true };
   }
+
+  return null;
+}
 
   /** Cross-field validator: verifyPhone must match phoneNumber */
   static phoneMatchValidator(group: AbstractControl): ValidationErrors | null {
