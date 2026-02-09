@@ -1,0 +1,99 @@
+<app-contact-header></app-contact-header>
+
+<!-- Form -->
+<form
+  class="contact-form"
+  [formGroup]="contactForm"
+  (ngSubmit)="onSubmit()"
+  novalidate
+>
+  <div class="contact-form__row">
+    <!-- 1. First Name -->
+    <app-form-input
+      [control]="getControl('firstName')"
+      label="First Name"
+      [fieldNumber]="1"
+      placeholder="Enter first name"
+      type="text"
+      [submitted]="submitted"
+    ></app-form-input>
+
+    <!-- 2. Last Name -->
+    <app-form-input
+      [control]="getControl('lastName')"
+      label="Last Name"
+      [fieldNumber]="2"
+      placeholder="Enter last name"
+      type="text"
+      [submitted]="submitted"
+    ></app-form-input>
+  </div>
+
+  <!-- 3. Email -->
+  <app-form-input
+    [control]="getControl('email')"
+    label="Email address"
+    [fieldNumber]="3"
+    placeholder="Enter your email address"
+    type="email"
+    [submitted]="submitted"
+  ></app-form-input>
+
+  <!-- 4. Phone Number -->
+  <app-phone-input
+    [control]="getControl('phoneNumber')"
+    label="Phone number"
+    [fieldNumber]="4"
+    hint="This is the number we will use to follow up with you about your application."
+    [submitted]="submitted"
+  ></app-phone-input>
+
+  <!-- 5. Verify Phone -->
+  <app-phone-input
+    [control]="getControl('verifyPhone')"
+    label="Verify phone number"
+    [fieldNumber]="5"
+    [submitted]="submitted"
+  ></app-phone-input>
+
+  <!-- 6. Second Phone (Optional) -->
+  <app-phone-input
+    [control]="getControl('secondPhone')"
+    label="Do you have a second phone number? (Optional)"
+    [fieldNumber]="6"
+    [required]="false"
+    hint="This is the number we will use to follow up with you about your application."
+    [submitted]="submitted"
+  ></app-phone-input>
+
+  <!-- 7. National Identity Number -->
+  <app-form-input
+    [control]="getControl('nationalId')"
+    label="What's your national identity number?"
+    [fieldNumber]="7"
+    placeholder="Enter your identity number"
+    type="text"
+    [showToggle]="true"
+    [submitted]="submitted"
+  ></app-form-input>
+
+  <!-- ID Disclaimer -->
+  <p class="id-disclaimer">
+    Your ID is required to verify your identity in line with CBK regulations.
+    Avenews complies with CBK regulations and is licensed as a data controller
+    by the ODPC. Your information is kept secure and confidential.
+  </p>
+
+  <app-terms-section
+    [control]="getControl('termsAccepted')"
+    [submitted]="submitted"
+  ></app-terms-section>
+
+  <!-- reCAPTCHA Mock -->
+  <app-recaptcha-mock
+    [control]="getControl('captchaChecked')"
+    [submitted]="submitted"
+  ></app-recaptcha-mock>
+
+  <app-submit-section [showGlobalError]="showGlobalError"></app-submit-section>
+</form>
