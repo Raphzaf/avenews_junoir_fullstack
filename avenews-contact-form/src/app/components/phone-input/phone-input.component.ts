@@ -25,12 +25,12 @@ export class PhoneInputComponent {
   }
 
   get errorMessage(): string {
-    if (!this.control.errors) return '';
-    if (this.control.errors['required']) return 'This field is required.';
-    if (this.control.errors['invalidPhone']) {
-      return 'Enter 7 digits after 254 (10 digits total).';
-    }
-    if (this.control.errors['phoneMismatch']) return 'Phone numbers do not match.';
-    return 'Invalid phone number.';
+  if (!this.control.errors) return '';
+  if (this.control.errors['required']) return 'This field is required.';
+  if (this.control.errors['invalidPhone']) {
+    return 'Please enter exactly 7 digits (254 prefix added automatically).';
+  }
+  if (this.control.errors['phoneMismatch']) return 'Phone numbers do not match.';
+  return 'Invalid phone number.';
   }
 }
