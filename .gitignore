@@ -1,0 +1,33 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Angular build output
+dist/
+tmp/
+out-tsc/
+bazel-out/
+.angular/cache
+
+# IDEs
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# Claude workspace
+.claude/
+
+# Sass
+.sass-cache/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
