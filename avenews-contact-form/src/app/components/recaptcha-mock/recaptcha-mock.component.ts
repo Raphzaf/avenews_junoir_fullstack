@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
@@ -6,7 +6,6 @@ import { NgClass } from '@angular/common';
   selector: 'app-recaptcha-mock',
   standalone: true,
   imports: [ReactiveFormsModule, NgClass],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './recaptcha-mock.component.html',
   styleUrl: './recaptcha-mock.component.scss',
 })

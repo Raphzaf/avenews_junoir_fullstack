@@ -3,20 +3,19 @@
 
 .footer {
   background-color: $color-bg-footer;
-  padding: $spacing-xl;
-  border-top: 1px solid #e2e8f0;
+  padding: $spacing-xl 0;
   text-align: center;
 
   @include tablet {
-    padding: 48px $spacing-2xl;
+    padding: 40px 0;
   }
 
   @include desktop {
-    padding: 48px 80px;
+    padding: 48px 0;
   }
 
   @include mobile {
-    padding: 12px 20px;
+    padding: 16px 20px;
   }
 
   &__text {

@@ -11,7 +11,7 @@
 
 .app-header {
   width: 100%;
-  z-index: 10;
+  margin-bottom: $spacing-md;
 }
 
 .app-footer {
@@ -20,9 +20,9 @@
 
 .app-container {
   width: 100%;
-  max-width: 360px;
+  max-width: 520px;
   background: $color-white;
-  box-shadow: $shadow-card;
+  box-shadow: 0 12px 32px -16px rgba(15, 23, 42, 0.25);
   overflow: hidden;
   border-radius: $radius-lg;
   border: 1px solid #e2e8f0;
@@ -38,33 +38,32 @@
   }
 
   @include tablet {
-    max-width: 768px;
+    max-width: 640px;
   }
 
   @include desktop {
-    max-width: 896px;
+    max-width: 680px;
   }
 
   @include desktop-xl {
-    max-width: 1040px;
+    max-width: 720px;
   }
 }
 
 .app-main {
   flex: 1;
-  padding: $spacing-2xl $spacing-xl 40px;
+  padding: 32px 32px 40px;
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
+  gap: 24px;
   background: $color-white;
-  border-bottom: 1px solid #e2e8f0;
 
   @include tablet {
-    padding: 48px 64px 56px;
+    padding: 40px 48px 56px;
   }
 
   @include desktop {
-    padding: 56px 80px 64px;
+    padding: 48px 56px 64px;
   }
 
   @include mobile {

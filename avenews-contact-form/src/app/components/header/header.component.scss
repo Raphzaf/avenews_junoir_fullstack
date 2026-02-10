@@ -4,50 +4,34 @@
 .header {
   background-color: $color-primary-dark;
   width: 100%;
-  border-bottom: 1px solid #134e5e;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 
   &__inner {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 20px $spacing-xl;
+    padding: 18px $spacing-xl;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 80px;
 
     @include tablet {
-      padding: 20px 48px;
+      padding: 18px 48px;
     }
 
     @include desktop {
-      padding: 20px 80px;
+      padding: 18px 80px;
     }
-  }
 
-  @include mobile {
-    &__inner {
-      height: 64px;
+    @include mobile {
       padding: 16px 20px;
     }
   }
 
   &__logo-image {
-    height: 24px;
+    height: 20px;
     width: auto;
     display: block;
-  }
-
-  &__step {
-    display: none;
-    color: #d3f9fa;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    font-family: $font-heading;
-
-    @include tablet {
-      display: block;
-    }
   }
 }

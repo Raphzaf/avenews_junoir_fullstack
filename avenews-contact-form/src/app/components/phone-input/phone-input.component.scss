@@ -31,60 +31,59 @@
 
   &__row {
     display: flex;
-    gap: $spacing-md;
+    align-items: stretch;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    background: $color-bg-input;
     margin-top: 4px;
-    
-    @include mobile {
-      flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus-within {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 1px $color-primary;
+    }
+
+    &--error {
+      border-color: $color-error;
+
+      &:focus-within {
+        border-color: $color-error;
+        box-shadow: 0 0 0 1px $color-error;
+      }
     }
   }
 
   &__prefix {
-    width: 80px;
-    min-width: 80px;
-    border: 1px solid $color-border;
-    border-radius: $radius-sm;
-    background: $color-bg-input;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 12px 8px;
-
-    @include tablet {
-      width: 96px;
-      min-width: 96px;
-      padding: 14px 10px;
-    }
-
-    @include mobile {
-      width: 100%;
-      min-width: 100%;
-      justify-content: flex-start;
-      padding-left: 12px;
-    }
+    padding: 12px;
+    border-right: 1px solid $color-border;
 
     span {
       color: $color-text;
       font-size: 14px;
       font-weight: 600;
-
-      @include tablet {
-        font-size: 16px;
-      }
+      white-space: nowrap;
     }
   }
 
   &__input {
-    @include input-base;
     flex: 1;
+    width: 100%;
+    border: none;
+    border-radius: 0 $radius-sm $radius-sm 0;
+    color: $color-text;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: $font-body;
+    line-height: 1.4;
+    padding: 12px;
+    background: transparent;
+    outline: none;
 
-    @include tablet {
-      font-size: 16px;
-      padding: 14px 16px;
-    }
-
-    &--error {
-      @include input-error;
+    &::placeholder {
+      color: $color-placeholder;
+      font-weight: 400;
     }
   }
 

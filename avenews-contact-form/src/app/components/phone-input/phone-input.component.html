@@ -10,7 +10,10 @@
     <p class="phone-field__hint">{{ hint }}</p>
   }
 
-  <div class="phone-field__row">
+  <div
+    class="phone-field__row"
+    [ngClass]="{ 'phone-field__row--error': showError }"
+  >
     <div class="phone-field__prefix">
       <span>{{ countryCode }}</span>
     </div>
@@ -19,7 +22,6 @@
       type="tel"
       [placeholder]="placeholder"
       [formControl]="control"
-      [ngClass]="{ 'phone-field__input--error': showError }"
       [attr.aria-invalid]="showError"
       class="phone-field__input"
     />
