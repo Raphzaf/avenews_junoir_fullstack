@@ -7,30 +7,39 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  height: 80px;
+  display: flex;
+  align-items: center;
 
   &__inner {
     width: 100%;
-    max-width: 1920px;
+    max-width: 520px;
     margin: 0 auto;
-    padding: 18px $spacing-xl;
+    padding: 12px 32px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+
+    @include mobile {
+      max-width: 100%;
+      padding: 12px 20px;
+    }
 
     @include tablet {
-      padding: 18px 48px;
+      max-width: 640px;
     }
 
     @include desktop {
-      padding: 18px 80px;
+      max-width: 680px;
     }
 
-    @include mobile {
-      padding: 16px 20px;
+    @include desktop-xl {
+      max-width: 720px;
     }
   }
 
   &__logo-image {
-    height: 20px;
+    height: 33px;
     width: auto;
     display: block;
   }

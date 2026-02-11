@@ -27,7 +27,7 @@ The application will be available at `http://localhost:4200`
 
 Full documentation, architecture details, and technical decisions can be found in the [avenews-contact-form README](./avenews-contact-form/README.md).
 
-##  Requirements Implemented
+## ✅ Requirements Implemented
 
 - ✅ Angular-based contact form with validation
 - ✅ Reactive Forms with custom validators

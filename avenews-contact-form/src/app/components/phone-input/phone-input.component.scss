@@ -8,10 +8,6 @@
 
   &__label {
     @include label-base;
-
-    @include tablet {
-      font-size: 18px;
-    }
   }
 
   &__required {

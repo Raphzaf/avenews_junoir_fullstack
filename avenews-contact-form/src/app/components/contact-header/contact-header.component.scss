@@ -12,41 +12,25 @@
 
   &__title {
     font-family: $font-heading;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
     color: $color-primary-dark;
     letter-spacing: -0.025em;
     line-height: 1.25;
 
     @include mobile {
-      font-weight: 700;
-      font-size: 19px;
-      line-height: 1.2;
-    }
-
-    @include tablet {
       font-size: 22px;
-    }
-
-    @include desktop {
-      font-size: 24px;
     }
   }
 
   &__subtitle {
     color: $color-text-muted;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1.6;
 
     @include mobile {
-      font-size: 12px;
-      line-height: 1.4;
-    }
-
-    @include tablet {
       font-size: 13px;
-      line-height: 1.6;
     }
   }
 }
